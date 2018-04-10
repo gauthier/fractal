@@ -114,8 +114,8 @@ if ($currentCursor) {
     $books = Book::take($limit)->get();
 }
 
-$newCursor = $books->last()->id;
-$cursor = new Cursor($currentCursor, $previousCursor, $newCursor, $books->count());
+$nextCursor = $books->last()->id;
+$cursor = new Cursor($currentCursor, $previousCursor, $nextCursor, $books->count());
 
 $resource = new Collection($books, new BookTransformer);
 $resource->setCursor($cursor);
